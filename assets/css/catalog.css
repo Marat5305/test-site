@@ -1,0 +1,24 @@
+.catalog_filter {
+    background-color: white;;
+    display: flex;
+    margin: 0;
+    padding: 5px;
+    width: 25%;
+    height: 100%;
+}
+
+.catalog_goodsWrap {
+    background-color: white;;
+    display: flex;
+    flex-flow: wrap;
+    height: auto;
+    width: 75%;
+    margin: 0;
+    padding: 5px;
+}
+
+.catalog_goodscardWrapper {
+    width: 25%;
+    height: 50px;
+    
+}

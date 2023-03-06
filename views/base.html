@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nest.js Muliple Page Application</title>
+    <meta name="description" content="A simple HTML5 Template for new projects.">
+    <!-- <link rel="stylesheet" href="../src/views/styles/css/base.css" type="text/css"> -->
+    <!-- <link rel="stylesheet" href="base.css"> -->
+    <!-- <link rel="stylesheet" href="../assets/css/base.css"/> -->
+    <link rel="stylesheet" href="css/base.css"/>
+    <link rel="stylesheet" href="css/bootstrap/bootstrap.min.css">
+
+  </head>
+
+  <body>
+  <header>
+    <div class="header">
+      <a class="base_link" href="/">
+        главная
+      </a>
+      <a class="base_link" href="/catalog">
+        test
+      </a>
+      <a class="base_link" href="">
+          блок
+      </a>
+      <a class="base_link" href="">
+          блок
+      </a>
+    </div>
+  </header>
+  <main>
+    <div class="container">
+      <h1>Наследованный!</h1>
+      {% block content %}
+
+      {% endblock %}
+    </div>
+ 
+  </main>
+  <footer>
+  </footer>
+    <div class="footer">
+
+    </div>
+  </body>
+</html>
