@@ -1,11 +1,22 @@
-import { Controller, Get, Req, Post, Res } from '@nestjs/common';
+import { Body, 
+        Controller, 
+        Get, 
+        Req, 
+        Post, 
+        Res,
+        Redirect } from '@nestjs/common';
 import { AppService } from './app.service';
+
+import { Good } from './goods/good.entity';
+import { GoodsService } from './goods/good.service';
+import { CreateGoodDto } from './goods/dto/create-good.dto';
+
 import { Request } from 'express';
 import { Render } from '@nestjs/common';
 import { Response } from 'express';
 
 
-@Controller()
+@Controller('')
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
@@ -18,28 +29,11 @@ export class AppController {
 
   // @Get()
   // @Render('index')
-
-
-  @Get('catalog')
-  test(@Res() res: Response): void {
-    return res.render('catalog.html');
-  }
 }
+
 
 @Controller('dev')
 export class DevController {
-  //constructor(private readonly appService: AppService) {}
-
-  @Get()
-  getDev(): string {
-    return 'in Dev!';
-  }
-
-  @Get('hello')
-  getHello(): string {
-    return 'Hello!';
-  }
-
   @Get('params')
   getParams(@Req() req: Request) {
     return req.url;

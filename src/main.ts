@@ -16,16 +16,16 @@ async function bootstrap() {
   // Include Nunjucks
   //const opts: nunjucks.ConfigureOptions = { express: app, autoescape: true, watch: !IS_PRODUCTION, noCache: !IS_PRODUCTION };
 
-  const assets = path.join(__dirname, '..', 'assets');
-  const views = path.join(__dirname, '..', 'views');
-  nunjucks.configure(views, { express });
+  // const assets = path.join(__dirname, '..', 'assets');
+  // const views = path.join(__dirname, '..', 'views');
+  nunjucks.configure(path.join(__dirname, '..', 'views'), { express });
   
   
   
   app.enableCors();
 
-  app.useStaticAssets(assets);
-  app.setBaseViewsDir(views);
+  app.useStaticAssets(path.join(__dirname, '..', 'assets'));
+  app.setBaseViewsDir(path.join(__dirname, '..', 'views'));
   app.setViewEngine('njk');
   // app.set('trust proxy', 1);
   // app.set('view engine', 'njk');

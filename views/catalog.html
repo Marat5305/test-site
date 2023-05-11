@@ -1,17 +1,53 @@
 {% extends "base.html" %}
-
+{% set title = "Каталог" %}
 {% block content %}
 <link rel="stylesheet" href="css/catalog.css">
 
 <div class="row">
-  <div class="catalog_filter">
+  <form action="" method="post">
+    Марка
+    <input name="mark" type="text">
+    Модель
+    <input name="model" type="text">
+    Категория
+    <input name="category" type="text">
+    маркировка
+    <input name="article" type="text">
+    Цена
+    <input name="cost" type="text">
+    
+    <!-- isActive
+    <input name="isActive" type="text"> -->
 
+    <input type="submit">
+
+</form>
+  <div class="filter">
+
+    <section>
+
+      <span></span>
+    </section>
 
   </div>
+  <!-- <div class="catalog_goodsWrap"> -->
   <div class="catalog_goodsWrap">
-    {% for i in range(0, 10) %}
-    <div class="catalog_goodscardWrapper">
-
+    {% for good in goods %}
+    <div class="col-3" style="display: flex; 
+                              flex-direction: column;
+                              margin-bottom: 10px;">
+      <div class="catalog_goodsWrap_header">
+        <img src="images/goods/vkladysh.jpg" alt="NULL">
+        <a href="images/service/heart.jpg"><i class="fa fa-heart-o"></i></a>
+      </div>
+      <h5>{{ good.mark }} {{ good.model }}</h5>
+      <h6>{{ good.article }}</h6>
+      <h6>{{ good.count }} шт.</h6>
+      <h4>{{ good.cost }} Р</h4>
+      <form class="catalog_form" action="" method="post">
+        <button type="submit">В корзину</button>
+      </form>
+      
     </div>
     {% endfor %}
   </div>

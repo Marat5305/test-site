@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+
+{% block content %}
+<link rel="stylesheet" href="css/catalog.css">
+<table>
+    <th><td>id</td><td>firstName</td><td>lastName</td><td>email</td><td>isActive</td></th>
+    {% for user in users %}
+        <tr><td>{{ user.id }}</td><td>{{ user.firstName }}</td><td>{{ user.lastName }}</td><td>{{ user.email }}</td><td>{{ user.isActive }}</td></tr>
+    {% endfor %}
+</table>
+
+
+
+<form action="" method="post">
+    Имя
+    <input name="firstName" type="text">
+    Фамилия
+    <input name="lastName" type="text">
+    email
+    <input name="email" type="text">
+    <!-- isActive
+    <input name="isActive" type="text"> -->
+
+    <input type="submit">
+
+</form>
+
+{% endblock %}

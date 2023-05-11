@@ -18,7 +18,7 @@ body {
     display: flex;
     width: 25%;
     height: 50px;
-    background-color: #005bff;
+    background-color: rgb(0, 153, 255);
     color: white;
     justify-content: center;
     align-items: center;
@@ -47,31 +47,4 @@ table {
 th {
     color: white;
     background-color: rgb(0, 174, 255);
-}
-
-
-/* Фильтрация */
-.filter {
-    background-color: white;;
-    display: flex;
-    margin: 0;
-    padding: 5px;
-    width: 25%;
-    height: 100%;
-}
-
-button {
-    border-radius: 5px;
-    margin: 0;
-    background-color: #005bff;
-    color: white;
-    align-items: center;
-    white-space: nowrap;
-    font-size: 1em;
-    border-color: #005bff;
-}
-
-.catalog_form {
-    display: flex;
-    flex-direction: column;
 }
