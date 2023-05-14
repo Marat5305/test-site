@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+{% set title = "Админ-панель" %}
+{% block content %}
+
+<div class="row">
+    <h5>Создание категории</h5>
+    <form action="" method="post">
+        Название категории
+        <input name="name" type="text">
+        <input type="submit">
+    </form>
+
+    <table>
+        {% for category in categories %}
+            <tr>
+                <td>{{category.name}}</td>
+                <td>{{category.goods}}</td>
+            </tr> 
+        {% endfor %}
+    </table>
+   <br>
+
+    <h5>Создание товара</h5>
+    <form action="" method="post">
+        Марка
+        <input name="mark" type="text">
+        Модель
+        <input name="model" type="text">
+        Категория
+        <input name="category" type="text">
+        маркировка
+        <input name="article" type="text">
+        Цена
+        <input name="cost" type="text">
+        
+        <!-- isActive
+        <input name="isActive" type="text"> -->
+    
+        <input type="submit">
+    
+    </form>
+    <table>
+        {% for good in goods %}
+            <tr>
+                <td>{{good.mark}}</td>
+                <td>{{good.model}}</td>
+                <td>{{good.category}}</td>
+                <td>{{good.cost}}</td> 
+            </tr> 
+        {% endfor %}
+    </table>
+
+</div>
+{% endblock %}

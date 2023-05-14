@@ -4,24 +4,7 @@
 <link rel="stylesheet" href="css/catalog.css">
 
 <div class="row">
-  <form action="" method="post">
-    Марка
-    <input name="mark" type="text">
-    Модель
-    <input name="model" type="text">
-    Категория
-    <input name="category" type="text">
-    маркировка
-    <input name="article" type="text">
-    Цена
-    <input name="cost" type="text">
-    
-    <!-- isActive
-    <input name="isActive" type="text"> -->
-
-    <input type="submit">
-
-</form>
+ 
   <div class="filter">
 
     <section>
@@ -40,6 +23,7 @@
         <img src="images/goods/vkladysh.jpg" alt="NULL">
         <a href="images/service/heart.jpg"><i class="fa fa-heart-o"></i></a>
       </div>
+      <h5>{{ good.category }}</h5>
       <h5>{{ good.mark }} {{ good.model }}</h5>
       <h6>{{ good.article }}</h6>
       <h6>{{ good.count }} шт.</h6>

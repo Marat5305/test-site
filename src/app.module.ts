@@ -21,6 +21,8 @@ import { Filters } from './filters/filters.entity';
 import { FiltersModule } from './filters/filters.module';
 import { FiltersController } from './filters/filters.controller'; 
 
+import { AdminModule } from './admin/admin.module';
+
 
 @Module({
   imports: [
@@ -43,7 +45,7 @@ import { FiltersController } from './filters/filters.controller';
       autoLoadEntities: true,
       synchronize: true,
      }),
-     UsersModule, GoodsModule, FiltersModule,
+     UsersModule, GoodsModule, FiltersModule, AdminModule,
   ],
   controllers: [AppController, DevController],
   providers: [AppService],

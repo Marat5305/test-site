@@ -1,4 +1,5 @@
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
+import { Category } from './category.entity';
 
 @Entity()
 export class Good {
@@ -18,8 +19,8 @@ export class Good {
     model: string;
 
     // Категория
-    @Column()
-    category: string;
+    @ManyToOne(type => Category, category => category.name)
+    category: Category;
 
     // Артикул
     @Column()
