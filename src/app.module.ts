@@ -23,6 +23,9 @@ import { FiltersController } from './filters/filters.controller';
 
 import { AdminModule } from './admin/admin.module';
 
+import { MulterModule } from '@nestjs/platform-express';
+import { FilesModule } from './files/files.module';
+
 
 @Module({
   imports: [
@@ -45,7 +48,10 @@ import { AdminModule } from './admin/admin.module';
       autoLoadEntities: true,
       synchronize: true,
      }),
-     UsersModule, GoodsModule, FiltersModule, AdminModule,
+     MulterModule.register({
+      dest: './assets/images/goods',
+     }),
+     UsersModule, GoodsModule, FiltersModule, AdminModule, FilesModule,
   ],
   controllers: [AppController, DevController],
   providers: [AppService],

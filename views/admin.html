@@ -3,7 +3,7 @@
 {% block content %}
 
 <div class="row">
-    <h5>Создание категории</h5>
+    <!-- <h5>Создание категории</h5>
     <form action="" method="post">
         Название категории
         <input name="name" type="text">
@@ -11,16 +11,16 @@
     </form>
 
     <table>
-        {% for category in categories %}
+        {% for category in items["categories"] %}
             <tr>
                 <td>{{category.name}}</td>
                 <td>{{category.goods}}</td>
             </tr> 
         {% endfor %}
     </table>
-   <br>
+   <br> -->
 
-    <h5>Создание товара</h5>
+    <!-- <h5>Создание товара</h5>
     <form action="" method="post">
         Марка
         <input name="mark" type="text">
@@ -32,23 +32,26 @@
         <input name="article" type="text">
         Цена
         <input name="cost" type="text">
+
+        <input name="img" type="file">
         
-        <!-- isActive
-        <input name="isActive" type="text"> -->
+   
     
         <input type="submit">
     
     </form>
     <table>
-        {% for good in goods %}
+        {% for good in items["goods"] %}
             <tr>
                 <td>{{good.mark}}</td>
                 <td>{{good.model}}</td>
                 <td>{{good.category}}</td>
                 <td>{{good.cost}}</td> 
+                <td>{{good.img}}</td>
             </tr> 
         {% endfor %}
-    </table>
-
+    </table> -->
+    <a href="admin/goods">Редактор товаров</a>
+    <a href="admin/categories">Редактор категорий</a>
 </div>
 {% endblock %}

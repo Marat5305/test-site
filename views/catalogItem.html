@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <table>
+            <tr>
+                <td>{{good.id}}</td>
+                <td>{{good.mark}}</td>
+                <td>{{good.model}}</td>
+                <td>{{good.category}}</td>
+                <td>{{good.cost}}</td> 
+                <td>{{good.img}}</td>
+                <td>
+                    <form action="" method="post">
+                        <input name="delete" type="submit" value="В корзину"></td>
+                    </form>
+
+            </tr>
+            
+        </table>
+    </div>
+{% endblock %}

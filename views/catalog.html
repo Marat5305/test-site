@@ -8,31 +8,35 @@
   <div class="filter">
 
     <section>
-
+      {% for category in items["categories"] %}
+        <a href="">{{category.name}}</a>
+      {% endfor %}
       <span></span>
     </section>
 
   </div>
   <!-- <div class="catalog_goodsWrap"> -->
   <div class="catalog_goodsWrap">
-    {% for good in goods %}
-    <div class="col-3" style="display: flex; 
-                              flex-direction: column;
-                              margin-bottom: 10px;">
-      <div class="catalog_goodsWrap_header">
-        <img src="images/goods/vkladysh.jpg" alt="NULL">
-        <a href="images/service/heart.jpg"><i class="fa fa-heart-o"></i></a>
+    {% for good in items["goods"] %}
+      <div class="col-12 col-sm-4 col-lg-3 col-xl-3" style="display: flex; 
+                                flex-direction: column;
+                                margin-bottom: 10px;">
+        <a href="catalog/{{good.id}}">
+          <div class="catalog_goodsWrap_header">
+            <img src="{{good.image}}" alt="NULL">
+            <!-- <a href="images/service/heart.jpg"><i class="fa fa-heart-o"></i></a> -->
+          </div>
+          <h5>{{ good.category }}</h5>
+          <h5>{{ good.mark }} {{ good.model }}</h5>
+          <h6>{{ good.article }}</h6>
+          <h6>{{ good.count }} шт.</h6>
+          <h4>{{ good.cost }} Р</h4>
+          <form class="catalog_form" action="" method="post">
+            <button type="submit">В корзину</button>
+          </form>
+        </a>
+        
       </div>
-      <h5>{{ good.category }}</h5>
-      <h5>{{ good.mark }} {{ good.model }}</h5>
-      <h6>{{ good.article }}</h6>
-      <h6>{{ good.count }} шт.</h6>
-      <h4>{{ good.cost }} Р</h4>
-      <form class="catalog_form" action="" method="post">
-        <button type="submit">В корзину</button>
-      </form>
-      
-    </div>
     {% endfor %}
   </div>
 </div>

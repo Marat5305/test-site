@@ -6,6 +6,7 @@ import { Good } from "./good.entity";
 import { NunjucksModule } from "nest-nunjucks";
 
 import { Category } from "./category.entity";
+import { CategoryService } from "./category.service";
 
 @Module({
     imports: [
@@ -16,7 +17,7 @@ import { Category } from "./category.entity";
             options: {},
           }),
         TypeOrmModule.forFeature([Good, Category])],
-    providers: [GoodsService],
+    providers: [GoodsService, CategoryService],
     controllers: [GoodsController],
 })
 

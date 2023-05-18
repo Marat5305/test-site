@@ -1,5 +1,4 @@
 import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
-import { Category } from './category.entity';
 
 @Entity()
 export class Good {
@@ -19,8 +18,10 @@ export class Good {
     model: string;
 
     // Категория
-    @ManyToOne(type => Category, category => category.name)
-    category: Category;
+    // @ManyToOne(type => Category, category => category.name, {nullable: true})
+    // category: Category;
+    @Column({nullable: true})
+    category: string;
 
     // Артикул
     @Column()
@@ -40,5 +41,5 @@ export class Good {
 
     // Изображение
     @Column({ nullable: true })
-    img: string;
+    image: string;
 }

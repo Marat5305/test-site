@@ -7,7 +7,8 @@ import { Category } from "src/goods/category.entity";
 import { Good } from "src/goods/good.entity";
 
 import { NunjucksModule } from "nest-nunjucks";
-import { AdminController } from "./admin.controller";
+import { AdminCategoryController, AdminController, AdminGoodsController } from "./admin.controller";
+// import { FilesModule } from '../files/files.module';
 
 @Module({
     imports: [
@@ -19,7 +20,7 @@ import { AdminController } from "./admin.controller";
         }),
         TypeOrmModule.forFeature([Good, Category])],
         providers: [GoodsService, CategoryService],
-        controllers: [AdminController],
+        controllers: [AdminController, AdminGoodsController, AdminCategoryController],
     
 })
 export class AdminModule {}

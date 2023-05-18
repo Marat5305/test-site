@@ -20,11 +20,24 @@ export class GoodsService {
         good.cost = createGoodDto.cost;
         good.count = createGoodDto.count;
         good.manufacturer = createGoodDto.manufacturer;
-        good.img = createGoodDto.img;
+        good.image = createGoodDto.image;
         
 
         return this.goodsRepository.save(good);
     }
+
+    async updateGood(id: string, createGoodDto: CreateGoodDto): Promise<void> {
+        await this.goodsRepository.update(id, createGoodDto);
+    }
+        
+    // }
+    // async updateGood(updateGoodDto: CreateGoodDto, id: number): Promise<Good> {
+    //     const good = this.findOne(id);
+    //     (await good).mark = updateGoodDto.mark;
+    //     (await good).model = updateGoodDto.model;
+    //     (await good).article = updateGoodDto.article;
+    //     return this.goodsRepository.update(id, good);
+    // }
 
 
     async findAll(): Promise<Good[]> {

@@ -4,10 +4,11 @@ export class CreateGoodDto {
     mark: string;
     model: string;
     // category: string;
-    category: Category;
+    // category: Category;
+    category: string;
     article: string;
     cost: string;
     count: string;
     manufacturer: string;
-    img: string;
+    image: string;
 }

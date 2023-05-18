@@ -10,6 +10,6 @@ export class Category {
     @Column({nullable: true})
     name: string;
 
-    @OneToMany(type => Good, good => good.id) goods: Good[];
+    // @OneToMany(type => Good, good => good.id) goods: Good[];
 
 }

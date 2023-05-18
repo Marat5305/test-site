@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <div class="row">
+        <table>
+            <tr>
+                <form action="update/{{good.id}}" method="post" enctype="multipart/form-data">
+                    <!-- <td><input name="id" type="text" value="{{good.id}}"></td> -->
+                    <td><input name="mark" type="text" value="{{good.mark}}"></td>
+                    <td><input name="model" type="text" value="{{good.model}}"></td>
+                    <td><input name="category" type="text" value="{{good.category}}"></td>
+                    <td><input name="article" type="text" value="{{good.article}}"></td>
+                    <td><input name="cost" type="text" value="{{good.cost}}"></td> 
+                    <td><input name="image" type="file" value="{{good.image}}"></td>
+                    <td><input type="submit" value="Сохранить изменения"></td>
+                </form>
+                
+                    <form action="delete/{{good.id}}" method="post">
+                        <input name="delete" id="id" type="submit" value="Удалить"></td>
+                    </form>
+
+            </tr>
+            
+        </table>
+    </div>
+{% endblock %}
