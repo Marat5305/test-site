@@ -15,6 +15,7 @@ import { NunjucksModule } from 'nest-nunjucks';
           }),
         TypeOrmModule.forFeature([Users])],
     providers: [UsersService],
+    exports: [UsersService],
     controllers: [UsersController],
 })
 

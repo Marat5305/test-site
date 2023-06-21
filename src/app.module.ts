@@ -27,6 +27,9 @@ import { MulterModule } from '@nestjs/platform-express';
 import { FilesModule } from './files/files.module';
 import { join } from 'path';
 
+import { AuthModule } from './auth/auth.module';
+
+
 
 @Module({
   imports: [
@@ -48,7 +51,7 @@ import { join } from 'path';
      MulterModule.register({
       dest: './assets/images/goods',
      }),
-     UsersModule, GoodsModule, FiltersModule, AdminModule, FilesModule,
+     UsersModule, GoodsModule, FiltersModule, AdminModule, FilesModule, AuthModule,
   ],
   controllers: [AppController, DevController],
   providers: [AppService],

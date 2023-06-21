@@ -18,12 +18,19 @@
       <a class="base_link" href="/catalog">
         Каталог
       </a>
-      <a class="base_link" href="/users">
+      <!-- <a class="base_link" href="/users">
           Пользователи
+      </a> -->
+      {% if user.username == null %}
+      <a class="base_link" href="/login">
+        Войти
       </a>
-      <a class="base_link" href="/admin">
-          Админ-панель
+      {% else %}
+      <a class="base_link" href="/logout">
+        Выйти
       </a>
+      {% endif %}
+      
       <a class="base_link" href="/lk">
           Личный кабинет
       </a>

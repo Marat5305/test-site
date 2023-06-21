@@ -10,6 +10,7 @@ import {
     UseInterceptors,
     UploadedFile,
     Delete,
+    Req,
 } from "@nestjs/common";
 
 import { Good } from '../goods/good.entity';
@@ -30,17 +31,22 @@ import { identity } from "rxjs";
 export class AdminController {
     constructor(private readonly goodsService: GoodsService, 
     private readonly categoriesService: CategoryService) {}
-
+// Promise<Object>
     @Get()
-    async findAllItems(@Res() res: Response): Promise<Object> {
+    async findAllItems(@Res() res: Response, @Req() req): Promise<void> {
         const categories = await this.categoriesService.findAll().then(result => result);
         const goods = await this.goodsService.findAll().then(result => result);
         let items = {
             "categories": categories,
             "goods": goods
         };
-        res.render("admin.html", {items})
-        return items;
+        if (req.user.role != 'admin') {
+            res.redirect('/');
+        }
+        else {
+            res.render("admin.html", {items})
+        }
+        // return items;
     }
 
 }

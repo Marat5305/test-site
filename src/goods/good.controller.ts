@@ -7,6 +7,7 @@ import {
     ParseIntPipe,
     Res,
     Redirect,
+    Req,
 } from "@nestjs/common";
 
 import { Good } from './good.entity';
@@ -26,11 +27,11 @@ export class GoodsController {
     model = require('../model/model');
 
     @Get()
-    async findAllItems(@Res() res: Response): Promise<Object> {
+    async findAllItems(@Res() res: Response, @Req() req): Promise<Object> {
         const categories = await this.categoryService.findAll().then(result => result);
         const goods = await this.goodsService.findAll().then(result => result);;
         var username = this.usersService.findBy("darth");
-        const recommends = await this.model.recommend(100);
+        const recommends = await this.model.recommend(req.user.id);
         console.log(username);
         let items = {
             "categories": categories,

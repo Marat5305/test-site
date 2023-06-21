@@ -5,6 +5,11 @@ import { NestExpressApplication } from '@nestjs/platform-express';
 import * as nunjucks from 'nunjucks';
 import * as path from 'path';
 
+import * as session from 'express-session';
+import flash = require('connect-flash');
+import * as passport from 'passport';
+
+
 const ROOT_DIR: string = join(__dirname, '..');
 const IS_PRODUCTION: boolean = process.env.NODE_ENV === 'production';
 
@@ -26,8 +31,17 @@ async function bootstrap() {
   // app.useStaticAssets(path.join(__dirname, 'assets', 'css'));
   app.setBaseViewsDir(path.join(__dirname, '..', 'views'));
   app.setViewEngine('njk');
-  // app.set('trust proxy', 1);
-  // app.set('view engine', 'njk');
+  app.use(
+    session({
+      secret: 'nest cats',
+      resave: false,
+      saveUninitialized: false,
+    }),
+  );
+
+  app.use(passport.initialize());
+  app.use(passport.session());
+  app.use(flash());
 
 
   await app.listen(3000);
