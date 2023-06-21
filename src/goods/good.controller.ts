@@ -15,36 +15,38 @@ import { CreateGoodDto } from "./dto/create-good.dto";
 
 import { Response } from 'express';
 import { CategoryService } from "./category.service";
+import { UsersService } from "src/users/users.service";
 
 @Controller('catalog')
 export class GoodsController {
   constructor(private readonly goodsService: GoodsService,
-    private readonly categoryService: CategoryService) {}
+    private readonly categoryService: CategoryService,
+    private readonly usersService: UsersService) {}
 
-//   @Get()
-//     async findAll(@Res() res: Response): Promise<Good[]> {
-//         const goods = await this.goodsService.findAll().then(result => result);
-//         res.render('catalog.html', { goods })
-//         return goods;
-//     }
+    model = require('../model/model');
+
     @Get()
     async findAllItems(@Res() res: Response): Promise<Object> {
         const categories = await this.categoryService.findAll().then(result => result);
-        const goods = await this.goodsService.findAll().then(result => result);
+        const goods = await this.goodsService.findAll().then(result => result);;
+        var username = this.usersService.findBy("darth");
+        const recommends = await this.model.recommend(100);
+        console.log(username);
         let items = {
             "categories": categories,
-            "goods": goods
+            "goods": goods,
+            "recommends": recommends,
         }
         res.render("catalog.html", {items});
         return items;
     }
 
-    @Get('/:id')
-    async getGood(@Res() res: Response, @Param('id') id: number): Promise<Good> {
-        const good = await this.goodsService.findOne(id);
-        res.render("catalogItem.html", {good})
-        return good;
-    }
+    // @Get('/:id')
+    // async getGood(@Res() res: Response, @Param('id') id: number): Promise<Good> {
+    //     const good = await this.goodsService.findOne(id);
+    //     res.render("catalogItem.html", {good})
+    //     return good;
+    // }
 
     // @Redirect('catalog')
     // @Post()
@@ -52,4 +54,26 @@ export class GoodsController {
         
     //     return this.goodsService.create(createGoodDto);
     // }
+}
+
+@Controller('catalog/:id')
+export class GoodIdController {
+    constructor(private readonly goodsService: GoodsService, 
+                private readonly categoryService: CategoryService) {}
+    
+    model = require('../model/model');
+    @Get()
+    async getGood(@Res() res: Response, @Param('id') id: number): Promise<Object> {
+        const good = await this.goodsService.findOne(id);
+        const goods = await this.goodsService.findAll();
+        const recommends = await this.model.recommend(100);
+        let items = {
+            'good': good,
+            'goods': goods,
+            'recommends': recommends
+        }
+
+        res.render("catalogItem.html", {items})
+        return good;
+    }
 }

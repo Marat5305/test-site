@@ -2,10 +2,8 @@ import { Entity, Column, PrimaryGeneratedColumn, ManyToOne } from "typeorm";
 
 @Entity()
 export class Good {
-
-    /*
-    id, марка, модель, категория, артикул, изображение, цена, количество, изготовитель
-    */
+    
+    // id, марка, модель, категория, артикул, изображение, цена, количество, изготовитель
     @PrimaryGeneratedColumn()
     id: number;
 
@@ -18,8 +16,6 @@ export class Good {
     model: string;
 
     // Категория
-    // @ManyToOne(type => Category, category => category.name, {nullable: true})
-    // category: Category;
     @Column({nullable: true})
     category: string;
 

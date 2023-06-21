@@ -30,20 +30,6 @@ import { identity } from "rxjs";
 export class AdminController {
     constructor(private readonly goodsService: GoodsService, 
     private readonly categoriesService: CategoryService) {}
-    
-    
-    // @Get()
-    // async findAllCategories(@Res() res: Response): Promise<Category[]> {
-    //     const categories = await this.categoriesService.findAll().then(result => result);
-    //     res.render("admin.html", {categories});
-    //     return categories;
-    // }
-    // @Get()
-    // async findAllGoods(@Res() res: Response): Promise<Good[]> {
-    //     const goods = await this.goodsService.findAll().then(result => result);
-    //     res.render("admin.html", {goods})
-    //     return goods;
-    // }
 
     @Get()
     async findAllItems(@Res() res: Response): Promise<Object> {
@@ -55,89 +41,8 @@ export class AdminController {
         };
         res.render("admin.html", {items})
         return items;
-    }//
+    }
 
-
-    // загрузка изображения
-    // @Redirect('admin')
-    // @Post()
-    // @UseInterceptors(
-    //     FileInterceptor('image', {
-    //         storage: diskStorage({
-    //             destination: './assets/images/goods',
-    //             filename: editFileName,
-    //         }),
-    //         fileFilter: imageFileFilter,
-    //     }), 
-    // )
-    // async uploadedFile(@UploadedFile() file) {
-    //     this.fileName = "./assets/images/goods/" + `${file.filename}`;
-    //     const response = {
-    //         originalName: file.originalname,
-    //         filename: file.filename,
-    //     };
-
-    // } 
-    // create2(@Body() createGoodDto: CreateGoodDto): Promise<Good> {
-    //     // createGoodDto.img = this.fileName;
-    //     return this.goodsService.create(createGoodDto);
-    // }
-
-    // // Переход в редактор категорий
-    // @Get('category')
-    // async findAllCategories(@Res() res: Response): Promise<Category[]> {
-    //     const categories = await this.categoriesService.findAll().then(result => result);
-    //     res.render("adminCategory.html", {categories});
-    //     return categories;
-    // }
-
-    // @Redirect('category')
-    // @Post('category')
-    // create(@Body() createCategoryDto: CreateCategoryDto): Promise<Category> {
-    //     return this.categoriesService.create(createCategoryDto);
-    // }
-    
-    // // Переход в редактор товаров
-    // @Get('goods')
-    // async findAllGoods(@Res() res: Response): Promise<Good[]> {
-    //     const goods = await this.goodsService.findAll().then(result => result);
-    //     res.render("adminGoods.html", {goods})
-    //     return goods;
-    // }
-
-    // // Хранит в себе новое имя загружаемого изображения
-    // fileName: string = undefined;
-    // // Создание нового товара
-    // @Redirect('goods')
-    // @Post('goods')
-    // @UseInterceptors(
-    //     FileInterceptor('image', {
-    //         storage: diskStorage({
-    //             destination: './assets/images/goods',
-    //             filename: editFileName,
-    //         }),
-    //         fileFilter: imageFileFilter,
-    //     }), 
-    // )
-    // createGood(@Body() createGoodDto: CreateGoodDto, @UploadedFile() file): Promise<Good> {
-    //     this.fileName = 'images/goods/' + `${file.filename}`;
-    //     createGoodDto.img = this.fileName;
-    //     return this.goodsService.create(createGoodDto);
-    // }
-
-    // // Переход на страницу редактирования одного товара
-    // @Get('goods/:id')
-    // async findOneGood(@Res() res: Response, @Param('id') id: number): Promise<Good> {
-    //     const good = await this.goodsService.findOne(id);
-    //     res.render("adminGoodsItem.html", {good});
-    //     return good;
-    // }    
-
-    // @Redirect('/admin/goods')
-    // @Post('goods/:id')
-    // async deleteOneGood(@Param('id') id: string): Promise<void> {
-    //     this.goodsService.remove(id);
-    // }
 }
 
 @Controller('admin/categories')
@@ -203,7 +108,7 @@ export class AdminGoodsController {
         }), 
     )
     createGood(@Body() createGoodDto: CreateGoodDto, @UploadedFile() file): Promise<Good> {
-        this.fileName = 'images/goods/' + `${file.filename}`;
+        this.fileName = '/assets/images/goods/' + `${file.filename}`;
         createGoodDto.image = this.fileName;
         return this.goodsService.create(createGoodDto);
     }

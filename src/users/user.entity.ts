@@ -1,26 +1,22 @@
 import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
 
 @Entity()
-export class User {
+export class Users {
     @PrimaryGeneratedColumn()
     id: number;
 
-
-    @Column({nullable: true})
+    @Column()
     username: string;
 
-    @Column({nullable: true})
+    @Column()
     password: string;
 
     @Column()
-    firstName: string;
-
-    @Column()
-    lastName: string;
-
-    @Column({ nullable: true })
     email: string;
 
-    @Column({ default: true })
-    isActive: boolean;
+    @Column()
+    role: string;
+
+    @Column()
+    isactive: boolean;
 }

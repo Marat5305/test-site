@@ -10,12 +10,13 @@ import {
     Redirect,
 } from '@nestjs/common';
 import { Response } from 'express';
+import { get } from 'http';
 
 import { CreateUserDto } from './dto/create-user.dto';
-import { User } from './user.entity';
+import { Users } from './user.entity';
 import { UsersService } from './users.service';
 
-@Controller('users')
+@Controller('lk')
 export class UsersController {
     constructor(private readonly usersService: UsersService) {}
 
@@ -34,17 +35,21 @@ export class UsersController {
 
     //     return res.render('users.html');
     // }
+    // @Get()
+    // async findAll2(@Res() res: Response): Promise<User[]> {
+    //     // let arr = this.usersService.findall().then();
+    //     // arr2: User[] = this.usersService.findall();
+    //     const users = await this.usersService.findall().then(result => result);
+    //     res.render('users.html', { users });
+    //     return users;
+    // }
     @Get()
-    async findAll2(@Res() res: Response): Promise<User[]> {
-        // let arr = this.usersService.findall().then();
-        // arr2: User[] = this.usersService.findall();
-        const users = await this.usersService.findall().then(result => result);
-        res.render('users.html', { users });
-        return users;
+    returnPage(@Res() res: Response): void {
+        res.render('lk.html');
     }
     @Redirect()
     @Post()
-    create(@Body() createUserDto: CreateUserDto): Promise<User> {
+    create(@Body() createUserDto: CreateUserDto): Promise<Users> {
         return this.usersService.create(createUserDto);
     }
     
@@ -55,7 +60,7 @@ export class UsersController {
 
 
     @Get(':id')
-    findOne(@Param('id', ParseIntPipe) id: number): Promise<User> {
+    findOne(@Param('id', ParseIntPipe) id: number): Promise<Users> {
         return this.usersService.findOne(id);
     }
 

@@ -9,7 +9,7 @@ import { GoodsService } from './goods/good.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { DataSource } from 'typeorm';
 
-import { User } from './users/user.entity';
+import { Users } from './users/user.entity';
 import { UsersModule } from './users/user.module';
 import { UsersController } from './users/users.controller';
 
@@ -25,26 +25,23 @@ import { AdminModule } from './admin/admin.module';
 
 import { MulterModule } from '@nestjs/platform-express';
 import { FilesModule } from './files/files.module';
+import { join } from 'path';
 
 
 @Module({
   imports: [
      NunjucksModule.forRoot({
        paths: [
-        //  "./views",
-        //  "./assets",
        ],
        options: {},
      }),
      TypeOrmModule.forRoot({
       type: 'postgres',
       host: 'localhost',
-      // port: 3306,
       port: 5555,
       username: 'postgres',
       password: 'root',
       database: 'mydb',
-      // entities: [User],
       autoLoadEntities: true,
       synchronize: true,
      }),

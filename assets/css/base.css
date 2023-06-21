@@ -1,7 +1,8 @@
 body {
     margin: 0; 
     padding: 0;
-    background-color: rgb(227, 227, 227)!important;
+    /* background-color: rgb(227, 227, 227)!important; */
+    background-color: white;
 }
 
 .header {
@@ -11,22 +12,25 @@ body {
     height: 100px;
     justify-content: space-between;
     align-items: center;
-    
+    border-bottom:rgb(2, 126, 208);
+    border-top:rgb(2, 126, 208);
 } 
 
 .header > a {
     display: flex;
     width: 25%;
     height: 50px;
-    background-color: #005bff;
-    color: white;
+    /* background-color: #005bff; */
+    background-color: white;
+    
+    color: black;
     justify-content: center;
     align-items: center;
 } 
 
 .header > a:hover {
-    color: white;
-    background-color: rgb(2, 126, 208);
+    color: rgb(2, 126, 208);
+    /* background-color: rgb(2, 126, 208); */
     text-decoration: none;
 }
 
@@ -34,11 +38,23 @@ body {
     display: flex;
     width: 100%;
     height: 50px;
-    background-color: rgb(0, 153, 255);
+    background-color: rgb(226, 235, 241);
     justify-content: space-between;
     align-items: center;
 } 
 
+a {
+    color: black;
+}
+h1, h2, h3, h4, h5, h6 {
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+a:hover {
+    color: blue;
+    text-decoration: none;
+}
 
 table {
 
@@ -50,15 +66,7 @@ th {
 }
 
 
-/* Фильтрация */
-.filter {
-    background-color: white;;
-    display: flex;
-    margin: 0;
-    padding: 5px;
-    width: 25%;
-    height: 100%;
-}
+
 
 button {
     border-radius: 5px;
@@ -71,7 +79,53 @@ button {
     border-color: #005bff;
 }
 
-.catalog_form {
-    display: flex;
-    flex-direction: column;
-}
+/* .tabs {
+    font-size: 0;
+    max-width: 350px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .tabs>input[type="radio"] {
+    display: none;
+  }
+
+  .tabs>div {
+     скрыть контент по умолчанию 
+    display: none;
+    border: 1px solid #e0e0e0;
+    padding: 10px 15px;
+    font-size: 16px;
+  }
+
+  /* отобразить контент, связанный с вабранной радиокнопкой (input type="radio") 
+  #tab-btn-1:checked~#content-1,
+  #tab-btn-2:checked~#content-2,
+  #tab-btn-3:checked~#content-3 {
+    display: block;
+  }
+
+  .tabs>label {
+    display: inline-block;
+    text-align: center;
+    vertical-align: middle;
+    user-select: none;
+    background-color: #f5f5f5;
+    border: 1px solid #e0e0e0;
+    padding: 2px 8px;
+    font-size: 16px;
+    line-height: 1.5;
+    transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out;
+    cursor: pointer;
+    position: relative;
+    top: 1px;
+  }
+
+  .tabs>label:not(:first-of-type) {
+    border-left: none;
+  }
+
+  .tabs>input[type="radio"]:checked+label {
+    background-color: #fff;
+    border-bottom: 1px solid #fff;
+  } */

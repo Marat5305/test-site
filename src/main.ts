@@ -20,11 +20,10 @@ async function bootstrap() {
   // const views = path.join(__dirname, '..', 'views');
   nunjucks.configure(path.join(__dirname, '..', 'views'), { express });
   
-  
-  
   app.enableCors();
 
-  app.useStaticAssets(path.join(__dirname, '..', 'assets'));
+  app.useStaticAssets(path.join(__dirname, '..', 'assets'), {prefix: '/assets'});
+  // app.useStaticAssets(path.join(__dirname, 'assets', 'css'));
   app.setBaseViewsDir(path.join(__dirname, '..', 'views'));
   app.setViewEngine('njk');
   // app.set('trust proxy', 1);

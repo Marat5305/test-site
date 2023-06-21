@@ -1,44 +1,122 @@
 {% extends "base.html" %}
 {% set title = "Каталог" %}
 {% block content %}
-<link rel="stylesheet" href="css/catalog.css">
+<link rel="stylesheet" href="/assets/css/catalog.css">
+
+<div class="row">
+  <div style="flex-direction: column">
+    <div class="row">
+      
+    </div>
+    <h6><a href="">Каталог товаров /</a> <a href=""> Filter_type</a></h6>
+    <h1>Каталог товаров</h1>
+  </div>
+  
+</div>
 
 <div class="row">
  
-  <div class="filter">
+  <div class="catalog_filterWrap">
 
     <section>
+      <h6>Тип товара</h6>
       {% for category in items["categories"] %}
+      <div class="row">
+        <input type="checkbox">
         <a href="">{{category.name}}</a>
+      </div>
       {% endfor %}
       <span></span>
     </section>
 
+    <section>
+      <h6>Цена</h6>
+      <div class="row" style="flex-direction: row">
+        От <input type="text" style="width: 30%;
+        border-radius: 5px;
+        border: solid 1px #cdcdcd;
+        margin: 5px;"> До <input type="text" style="width: 30%;
+        border-radius: 5px;
+        border: solid 1px #cdcdcd;
+        margin: 5px;"> 
+      </div>
+      <span></span>
+    </section>
+
+
+   
+
+  </div>
+  <div class="col">
+    <div>
+      <h6>
+        Популярное <i class="fa fa-angle-down"></i>
+      </h6>
+    </div>
+    <div class="catalog_goodsWrap">
+      {% for good in items["goods"] %}
+      <!-- col-12 col-sm-4 col-lg-3 col-xl-3 -->
+        <div class="col-12 col-sm-6 col-md-6 col-lg-4 col-xl-3 " style="
+                                  margin-bottom: 10px; position: relative">
+          <a href="catalog/{{good.id}}">
+            <div class="catalog_goodsWrap_header">
+              <img src="{{good.image}}" alt="NULL">
+              <!-- <a href="images/service/heart.jpg"><i class="fa fa-heart-o"></i></a> -->
+            </div>
+            <div>
+             <h5 style="    white-space: wrap;
+             overflow: hidden;
+             display: -webkit-box;
+             -webkit-box-orient: vertical;
+             text-overflow: ellipsis;
+             -webkit-line-clamp: 2;
+             line-height: 1;">{{ good.category }} {{ good.mark }} {{ good.model }}</h5>
+            </div>
+          </a>
+
+            <h4>{{ good.cost }} Р</h4>
+            <form class="catalog_form" action="" method="post">
+              <button type="submit">В корзину</button>
+            </form>
+          
+        </div>
+      {% endfor %}
+    </div>
   </div>
   <!-- <div class="catalog_goodsWrap"> -->
-  <div class="catalog_goodsWrap">
-    {% for good in items["goods"] %}
-      <div class="col-12 col-sm-4 col-lg-3 col-xl-3" style="display: flex; 
-                                flex-direction: column;
-                                margin-bottom: 10px;">
-        <a href="catalog/{{good.id}}">
+  
+</div>
+
+<div class="col">
+  <h1>Рекомендуем также</h1>
+  <div class="row">
+    {% for rec in items["recommends"] %}
+      <div class="col-2" style="height: 300px; background-color: white; padding: 5px; margin: 0">
+        <a href="catalog/#">
           <div class="catalog_goodsWrap_header">
-            <img src="{{good.image}}" alt="NULL">
-            <!-- <a href="images/service/heart.jpg"><i class="fa fa-heart-o"></i></a> -->
+            <img src="/assets/images/goods/phone.jpg" alt="NULL">
           </div>
-          <h5>{{ good.category }}</h5>
-          <h5>{{ good.mark }} {{ good.model }}</h5>
-          <h6>{{ good.article }}</h6>
-          <h6>{{ good.count }} шт.</h6>
-          <h4>{{ good.cost }} Р</h4>
+          <div>
+           <h5 style="    white-space: wrap;
+           overflow: hidden;
+           display: -webkit-box;
+           -webkit-box-orient: vertical;
+           text-overflow: ellipsis;
+           -webkit-line-clamp: 2;
+           line-height: 1;">{{ rec.name }}</h5>
+           <h5> {{rec.cost}}</h5>
+          </div>
+        </a>
+
           <form class="catalog_form" action="" method="post">
             <button type="submit">В корзину</button>
           </form>
-        </a>
-        
       </div>
+
+      
     {% endfor %}
   </div>
+
 </div>
 
 {% endblock %}
