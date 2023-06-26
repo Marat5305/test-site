@@ -1,20 +1,71 @@
 {% extends "base.html" %}
 
 {% block content %}
-<link rel="stylesheet" href="css/index.css">
-
-{% for i in range(0, 10) %}
-    <div class="row main_row">
-        <div class="main_column">
-            <div>
-
+<link rel="stylesheet" href="/assets/css/index.css">
+<div class="col">
+    <div class="row">
+        <div class="commerceMain_block">
+            <div class="commerceMain_left">
+                <h1>Интернет-магазин "Альфа"</h1>
+                <p>Интернет-магазин цифровой техники</p>
             </div>
-        </div>
-        <div class="main_column">
-            <div>
-                
+            <div class="commerceMain_right">
+                <img src="/assets/images/goods/phone2.jpg" alt="">
             </div>
+        </div </div>
+        <div class="col">
+            <!-- Единый блок рекомендаций -->
+            {% if items["user"] != null %}
+            <h1>Популярное</h1>
+            <div class="row">
+                <div class="goodsTape">
+                    {% for rec in items["recommends"] %}
+                    <div class="col-2 goodsTape_card">
+                        <a href="catalog/#">
+                            <div class="goodsTape_card_header">
+                                <img src="/assets/images/goods/phone.jpg" alt="NULL">
+                            </div>
+                            <div>
+                                <h5>{{ rec.name }}</h5>
+                                <h5> {{rec.cost}}</h5>
+                            </div>
+                        </a>
+
+                        <form class="goodsTape_form" action="" method="post">
+                            <button type="submit">В корзину</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
+            {% if items["user"] != null %}
+            <h1>Рекомендуем также</h1>
+            <div class="row">
+                <div class="goodsTape">
+                    {% for rec in items["recommends"] %}
+                    <div class="col-2 goodsTape_card">
+                        <a href="catalog/#">
+                            <div class="goodsTape_card_header">
+                                <img src="/assets/images/goods/phone.jpg" alt="NULL">
+                            </div>
+                            <div>
+                                <h5>{{ rec.name }}</h5>
+                                <h5> {{rec.cost}}</h5>
+                            </div>
+                        </a>
+
+                        <form class="catalog_form" action="" method="post">
+                            <button type="submit">В корзину</button>
+                        </form>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            {% endif %}
+
         </div>
     </div>
-{% endfor %}
-{% endblock %}
+
+    {% endblock %}

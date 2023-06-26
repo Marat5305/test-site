@@ -21,9 +21,13 @@
       <!-- <a class="base_link" href="/users">
           Пользователи
       </a> -->
-      {% if user.username == null %}
+      {% if items["user"].username == null %}
       <a class="base_link" href="/login">
         Войти
+      </a>
+      {% elif user.username == null %}
+      <a class="base_link" href="/logout">
+        Выйти
       </a>
       {% else %}
       <a class="base_link" href="/logout">

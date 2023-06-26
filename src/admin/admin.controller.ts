@@ -31,7 +31,6 @@ import { identity } from "rxjs";
 export class AdminController {
     constructor(private readonly goodsService: GoodsService, 
     private readonly categoriesService: CategoryService) {}
-// Promise<Object>
     @Get()
     async findAllItems(@Res() res: Response, @Req() req): Promise<void> {
         const categories = await this.categoriesService.findAll().then(result => result);
@@ -46,9 +45,7 @@ export class AdminController {
         else {
             res.render("admin.html", {items})
         }
-        // return items;
     }
-
 }
 
 @Controller('admin/categories')
@@ -151,16 +148,4 @@ export class AdminGoodsController {
         createGoodDto.image = this.fileName;
         this.goodsService.updateGood(id, createGoodDto);
     }
-    // @Redirect('/admin/goods')
-    // @Post('/delete/')
-    // async deleteOneGood(@Body() body): Promise<void> {
-    //     this.goodsService.remove(body.id);
-    // }
-    // @Redirect('/admin/goods')
-    // @Delete(':id')
-    // async deleteOneGood(@Param('id') id: string) {
-    //     this.goodsService.remove(id);
-    // }
-
-
 }

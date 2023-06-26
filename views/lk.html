@@ -1,5 +1,25 @@
 {% extends "base.html" %}
+
 {% block content%}
-{{ user.username }}
-{{ user.role }}
+{{ items["user"].username }}
+{{ items["user"].role }}
+<div class="row">
+    <div style="flex-direction: column">
+        <h1>Личный кабинет</h1>
+    </div>
+</div>
+<div class="row">
+    <div class="col">
+        <div>
+            Имя пользователя: <label>items["user"].username</label>
+        </div>
+        <div>
+            Ваша роль: <label>items["user"].role</label>
+        </div>
+        <div>
+            Пароль: <label>*******</label>
+        </div>
+    </div>
+</div>
+
 {% endblock %}

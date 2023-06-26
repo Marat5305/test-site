@@ -13,6 +13,7 @@ import { AppService } from './app.service';
 
 import { Good } from './goods/good.entity';
 import { GoodsService } from './goods/good.service';
+import { CategoryService } from './goods/category.service';
 import { CreateGoodDto } from './goods/dto/create-good.dto';
 
 // import { Request } from 'express';
@@ -22,18 +23,45 @@ import { Response } from 'express';
 import { LoginGuard } from './guards/login.guard';
 import { AuthenticatedGuard } from './guards/authenticated.guard';
 import { AuthExceptionFilter } from './common/auth-exceptions.filter';
+import { threadId } from 'worker_threads';
 
 
 @Controller('')
 @UseFilters(AuthExceptionFilter)
 export class AppController {
-  constructor(private readonly appService: AppService) {}
+  constructor(private readonly appService: AppService,
+              private goodsService: GoodsService,
+              private readonly categoryService: CategoryService) {}
 
-
+  model = require('./model/model');
   @Get()
-  index(@Res() res: Response, @Req() req): void {
-    const headline: string = 'Nunjucks!';
-    return res.render('index.html', {user: req.user});
+  async index(@Res() res: Response, @Req() req): Promise<void> {
+
+    var recommends: any;
+      const categories = await this.categoryService.findAll().then(result => result);
+      const goods = await this.goodsService.findAll().then(result => result);;
+      // var username = this.usersService.findBy("darth");
+      var recommends: any;
+      if (req.user != null) {
+            recommends = await this.model.recommend(req.user.id);
+      }
+      // console.log(username);
+      var items: Object; 
+      if (req.user != null) {
+        items = {
+          "categories": categories,
+          "goods": goods,
+          "recommends": recommends,
+          "user": req.user,
+        }
+      }
+      else {
+        items = {
+          "categories": categories,
+          "goods": goods,
+        }
+      }
+    return res.render('index.html', {items} );
   }
 
   @Get('/login')
@@ -51,9 +79,11 @@ export class AppController {
 
   @UseGuards(AuthenticatedGuard)
   @Get('/lk')
-  getLK(@Res() res, @Request() req) {
-    res.render("lk.html", {user: req.user});
-    return { user: req.user};
+  getLK(@Res() res, @Request() req): void {
+    var items = {
+      "user": req.user,
+    }
+    res.render("lk.html", {items});
   }
 
   @Get('/logout')

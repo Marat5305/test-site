@@ -9,6 +9,8 @@ import { Category } from "./category.entity";
 import { CategoryService } from "./category.service";
 import { Users } from "src/users/user.entity";
 import { UsersService } from "src/users/users.service";
+import { Cart } from "src/cart/cart.entity";
+import { Raitings } from "src/raitings/raitings.entity";
 
 // import { ModelClass } from "src/model/model";
 
@@ -21,9 +23,10 @@ import { UsersService } from "src/users/users.service";
             ],
             options: {},
           }),
-        TypeOrmModule.forFeature([Good, Category, Users])],
+        TypeOrmModule.forFeature([Good, Category, Users, Cart, Raitings])],
     providers: [GoodsService, CategoryService, UsersService],
     controllers: [GoodsController, GoodIdController],
+    exports: [GoodsService, CategoryService],
 })
 
 export class GoodsModule {}

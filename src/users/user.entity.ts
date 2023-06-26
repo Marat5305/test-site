@@ -1,4 +1,6 @@
-import { Entity, Column, PrimaryGeneratedColumn } from 'typeorm';
+import { Cart } from 'src/cart/cart.entity';
+import { Raitings } from 'src/raitings/raitings.entity';
+import { Entity, Column, PrimaryGeneratedColumn, OneToMany } from 'typeorm';
 
 @Entity()
 export class Users {
@@ -19,4 +21,9 @@ export class Users {
 
     @Column()
     isactive: boolean;
+    @OneToMany(() => Cart, (cart) => cart.users)
+    cart: Cart[];
+    @OneToMany(() => Raitings, (raitings) => raitings.users)
+    raitings: Raitings[];
+
 }
